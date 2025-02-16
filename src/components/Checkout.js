@@ -200,10 +200,10 @@ const Checkout = ({ cartItems, onOrderConfirm }) => {
                   {['credit', 'debit', 'paypal'].map(method => (
                     <label 
                       key={method}
-                      className={`border rounded p-4 text-center cursor-pointer ${
+                      className={`p-4 border rounded cursor-pointer ${
                         formData.paymentMethod === method 
-                          ? 'bg-blue-500 text-white' 
-                          : 'bg-gray-100'
+                          ? 'bg-blue-100 border-blue-500' 
+                          : 'bg-white'
                       }`}
                     >
                       <input 
@@ -212,56 +212,13 @@ const Checkout = ({ cartItems, onOrderConfirm }) => {
                         value={method}
                         checked={formData.paymentMethod === method}
                         onChange={handleInputChange}
-                        className="hidden"
+                        className="mr-2"
                       />
-                      {method.charAt(0).toUpperCase() + method.slice(1)} Card
+                      {method.charAt(0).toUpperCase() + method.slice(1)}
                     </label>
                   ))}
                 </div>
               </div>
-
-              <div className="mb-4">
-                <label className="block mb-2">Card Number</label>
-                <input 
-                  type="text" 
-                  placeholder="1234 5678 9012 3456"
-                  className="w-full p-2 border rounded"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-2">Expiry Date</label>
-                  <input 
-                    type="text" 
-                    placeholder="MM/YY"
-                    className="w-full p-2 border rounded"
-                  />
-                </div>
-                <div>
-                  <label className="block mb-2">CVV</label>
-                  <input 
-                    type="text" 
-                    placeholder="123"
-                    className="w-full p-2 border rounded"
-                  />
-                </div>
-              </div>
-
-              <div className="mt-6 bg-gray-100 p-4 rounded">
-                <h4 className="font-semibold mb-2">Order Summary</h4>
-                {cartItems.map(item => (
-                  <div key={item.id} className="flex justify-between mb-2">
-                    <span>{item.name} x {item.quantity}</span>
-                    <span>₹{item.price * item.quantity}</span>
-                  </div>
-                ))}
-                <div className="border-t mt-2 pt-2 flex justify-between font-bold">
-                  <span>Total</span>
-                  <span>₹{total}</span>
-                </div>
-              </div>
-
               <div className="flex justify-between mt-4">
                 <button 
                   type="button"
@@ -274,7 +231,7 @@ const Checkout = ({ cartItems, onOrderConfirm }) => {
                   type="submit"
                   className="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600"
                 >
-                  Place Order
+                  Confirm Order
                 </button>
               </div>
             </div>
